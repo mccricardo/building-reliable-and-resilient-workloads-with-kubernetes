@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resilient-workload-app
+spec:
+  containers:
+  - name: resilient-workload-app
+    image: resilient-workload-app:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+    - containerPort: 3000
