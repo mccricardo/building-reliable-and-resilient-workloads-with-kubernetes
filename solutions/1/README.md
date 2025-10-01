@@ -35,7 +35,7 @@ This document provides the solution for deploying the application as a Kubernete
         image: resilient-workload-app:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
     ```
 
 4.  **Deploy the Pod:**
