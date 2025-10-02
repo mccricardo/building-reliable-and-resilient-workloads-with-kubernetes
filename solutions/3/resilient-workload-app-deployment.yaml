@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resilient-workload-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: resilient-workload-app
+  template:
+    metadata:
+      labels:
+        app: resilient-workload-app
+    spec:
+      containers:
+      - name: resilient-workload-app
+        image: resilient-workload-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
