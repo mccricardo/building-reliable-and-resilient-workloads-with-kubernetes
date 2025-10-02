@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math"
-	"time"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -45,7 +44,6 @@ func main() {
 
 	app.Get("/start", func(c *fiber.Ctx) error {
 		fmt.Println("Starting up...")
-		time.Sleep(15 * time.Second)
 		fmt.Println("Startup complete!")
 		return c.SendString("Started")
 	})
