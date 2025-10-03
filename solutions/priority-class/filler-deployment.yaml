@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filler-deployment
+spec:
+  replicas: 16 # Adjust as needed for your cluster size
+  selector:
+    matchLabels:
+      app: filler
+  template:
+    metadata:
+      labels:
+        app: filler
+    spec:
+      priorityClassName: low-priority
+      containers:
+      - name: filler-container
+        image: nginx
+        resources:
+          requests:
+            cpu: "1000m"
