@@ -1,0 +1,15 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: cron-scaledobject
+spec:
+  scaleTargetRef:
+    name: resilient-workload-app
+  triggers:
+  - type: cron
+    metadata:
+      timezone: "Etc/UTC"
+      start: "* 8 * * *"
+      end: "* 19 * * *"
+      desiredReplicas: "3"
+  cooldownPeriod: 30

@@ -6,8 +6,10 @@ In this challenge, we'll explore how to use KEDA (Kubernetes-based Event-driven 
 
 First, you need to install KEDA in your cluster. You can do this using Helm or by applying the YAML files directly. We will use the YAML files.
 
+If you get an error about annotations being too long, try adding the `--server-side` flag to the command.
+
 ```bash
-kubectl apply -f https://github.com/kedacore/keda/releases/download/v2.12.0/keda-2.12.0.yaml
+kubectl apply -f https://github.com/kedacore/keda/releases/download/v2.12.0/keda-2.12.0.yaml --server-side
 ```
 This will install all the necessary KEDA components in the `keda` namespace.
 
