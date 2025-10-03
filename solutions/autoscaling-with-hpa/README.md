@@ -48,7 +48,7 @@ spec:
 
 Apply the HPA:
 ```bash
-~ kubectl apply -f resilient-workload-app-hpa.yaml
+~ kubectl apply -f hpa.yaml
 ```
 
 **Imperative command:**
@@ -72,3 +72,16 @@ You can also watch the pods being created:
 ```
 
 When you stop the load generation (by stopping the `curl` loop), the CPU utilization will drop. After a few minutes, the HPA will scale the deployment back down to 1 replica.
+
+## 5. How it Works: Metrics Server and HPA
+
+The Kubernetes Metrics Server collects resource usage data (CPU and memory) from each node's kubelet. It then exposes this data through the Kubernetes Metrics API.
+
+The Horizontal Pod Autoscaler (HPA) controller periodically queries this API to get the metrics for the pods it's configured to scale. Based on the current metric values and the target values you define, the HPA decides whether to increase or decrease the number of replicas.
+
+You can query the Metrics API yourself to see the raw data. The following command will show you the CPU and memory usage for all pods:
+
+```bash
+~ kubectl get --raw "/apis/metrics.k8s.io/v1beta1/pods" | jq .
+```
+(The `jq` command is optional, but it makes the output much more readable).
