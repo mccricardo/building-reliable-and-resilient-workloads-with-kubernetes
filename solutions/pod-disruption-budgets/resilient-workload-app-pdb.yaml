@@ -1,0 +1,9 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: resilient-workload-app
+spec:
+  minAvailable: 9
+  selector:
+    matchLabels:
+      app: resilient-workload-app
