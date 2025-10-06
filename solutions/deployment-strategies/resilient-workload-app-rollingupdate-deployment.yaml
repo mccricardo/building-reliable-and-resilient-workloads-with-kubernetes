@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resilient-workload-app-rollingupdate
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: resilient-workload-app-rollingupdate
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: resilient-workload-app-rollingupdate
+    spec:
+      containers:
+      - name: resilient-workload-app
+        image: resilient-workload-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
