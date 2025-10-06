@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resilient-workload-app-recreate
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: resilient-workload-app-recreate
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: resilient-workload-app-recreate
+    spec:
+      containers:
+      - name: resilient-workload-app
+        image: resilient-workload-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
