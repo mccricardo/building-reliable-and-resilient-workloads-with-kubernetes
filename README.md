@@ -6,7 +6,6 @@
   - [Docker](https://www.docker.com/get-started)
   - [kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
-  - [Helm](https://helm.sh/docs/intro/install/)
   - [curl](https://curl.se/) (optional)
 
 
